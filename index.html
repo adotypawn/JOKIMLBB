@@ -2,78 +2,201 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Joki Rank Heimu</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RankBoost ID - Joki Rank Profesional</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
 body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
   background:#0f0f1a;
   color:white;
-  font-family:Arial;
-  padding:20px;
 }
-input, select, button{
+
+.header{
+  text-align:center;
+  padding:50px 20px;
+  background:linear-gradient(135deg,#111,#1c1c2e);
+  animation:fadeIn 1s ease-in-out;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:700;
+  color:#facc15;
+}
+
+.container{
+  padding:20px;
+  max-width:500px;
+  margin:auto;
+}
+
+.card{
+  background:#1c1c2e;
+  padding:20px;
+  border-radius:16px;
+  margin-bottom:20px;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+  animation:slideUp 0.6s ease;
+}
+
+input, select{
   width:100%;
   padding:12px;
   margin-bottom:10px;
   border:none;
-  border-radius:8px;
+  border-radius:10px;
+  background:#2c2c44;
+  color:white;
 }
-button{
-  background:gold;
+
+.paket{
+  background:#2c2c44;
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.paket:hover{
+  background:#3a3a66;
+  transform:scale(1.03);
+}
+
+.paket.active{
+  border:2px solid #facc15;
+}
+
+.total{
+  font-size:18px;
   font-weight:bold;
+  color:#facc15;
+  margin:10px 0;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#facc15;
+  font-weight:bold;
+  font-size:16px;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#ffe047;
+}
+
+.footer{
+  text-align:center;
+  padding:20px;
+  font-size:12px;
+  opacity:0.6;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+@keyframes slideUp{
+  from{transform:translateY(30px);opacity:0;}
+  to{transform:translateY(0);opacity:1;}
 }
 </style>
 </head>
+
 <body>
 
-<h2>Jasa Joki Rank ML</h2>
+<div class="header">
+  <div class="logo">⚡ HeimuJoki</div>
+  <p>Jasa Joki Rank Mobile Legends Aman & Cepat</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h3>Isi Data Order</h3>
 
 <input id="nama" placeholder="Nama">
 <input id="wa" placeholder="Nomor WhatsApp">
 <input id="gameid" placeholder="User ID Game">
 
-<select id="paket">
-<option>Epic / Star - 7.000</option>
-<option>Legend / Star - 9.000</option>
-<option>Mythic / Star - 25.000</option>
-</select>
+<h3>Pilih Paket</h3>
 
-<button onclick="kirim()">Kirim Order</button>
+<div class="paket" onclick="pilih(this,7000)">
+Epic / Star - 7.000
+</div>
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+<div class="paket" onclick="pilih(this,9000)">
+Legend / Star - 9.000
+</div>
 
-<script type="module">
+<div class="paket" onclick="pilih(this,25000)">
+Mythic / Star - 25.000
+</div>
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+<label>Jumlah Star</label>
+<input type="number" id="qty" value="1" min="1" onchange="hitung()">
 
-const firebaseConfig = {
-  apiKey: "ISI_DARI_FIREBASE",
-  authDomain: "ISI_DARI_FIREBASE",
-  projectId: "ISI_DARI_FIREBASE",
-  storageBucket: "ISI_DARI_FIREBASE",
-  messagingSenderId: "ISI_DARI_FIREBASE",
-  appId: "ISI_DARI_FIREBASE"
-};
+<div class="total">
+Total: Rp <span id="total">0</span>
+</div>
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+<button onclick="kirim()">Order Sekarang</button>
 
-window.kirim = async function(){
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 RankBoost ID • 100% Aman • Bergaransi
+</div>
+
+<script>
+
+let harga = 0;
+
+function pilih(element, price){
+  document.querySelectorAll('.paket').forEach(p=>p.classList.remove('active'));
+  element.classList.add('active');
+  harga = price;
+  hitung();
+}
+
+function hitung(){
+  let qty = document.getElementById("qty").value;
+  let total = harga * qty;
+  document.getElementById("total").innerText = total.toLocaleString("id-ID");
+}
+
+function kirim(){
+  if(harga === 0){
+    alert("Pilih paket dulu!");
+    return;
+  }
 
   const nama = document.getElementById("nama").value;
   const wa = document.getElementById("wa").value;
   const gameid = document.getElementById("gameid").value;
-  const paket = document.getElementById("paket").value;
+  const qty = document.getElementById("qty").value;
+  const total = document.getElementById("total").innerText;
 
-  await addDoc(collection(db,"orders"),{
-    nama, wa, gameid, paket,
-    status:"pending",
-    createdAt:new Date()
-  });
+  const pesan = `Halo Admin,%0A
+Saya ingin order joki:%0A%0A
+Nama: ${nama}%0A
+WA: ${wa}%0A
+Game ID: ${gameid}%0A
+Jumlah Star: ${qty}%0A
+Total: Rp ${total}`;
 
-  alert("Order berhasil dikirim!");
+  window.open(`https://wa.me/62895337619194?text=${pesan}`);
 }
 
 </script>
