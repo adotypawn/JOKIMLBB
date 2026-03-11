@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Joki Rank Heimu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+  background:#0f0f1a;
+  color:white;
+  font-family:Arial;
+  padding:20px;
+}
+input, select, button{
+  width:100%;
+  padding:12px;
+  margin-bottom:10px;
+  border:none;
+  border-radius:8px;
+}
+button{
+  background:gold;
+  font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<h2>Jasa Joki Rank ML</h2>
+
+<input id="nama" placeholder="Nama">
+<input id="wa" placeholder="Nomor WhatsApp">
+<input id="gameid" placeholder="User ID Game">
+
+<select id="paket">
+<option>Epic / Star - 7.000</option>
+<option>Legend / Star - 9.000</option>
+<option>Mythic / Star - 25.000</option>
+</select>
+
+<button onclick="kirim()">Kirim Order</button>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "ISI_DARI_FIREBASE",
+  authDomain: "ISI_DARI_FIREBASE",
+  projectId: "ISI_DARI_FIREBASE",
+  storageBucket: "ISI_DARI_FIREBASE",
+  messagingSenderId: "ISI_DARI_FIREBASE",
+  appId: "ISI_DARI_FIREBASE"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.kirim = async function(){
+
+  const nama = document.getElementById("nama").value;
+  const wa = document.getElementById("wa").value;
+  const gameid = document.getElementById("gameid").value;
+  const paket = document.getElementById("paket").value;
+
+  await addDoc(collection(db,"orders"),{
+    nama, wa, gameid, paket,
+    status:"pending",
+    createdAt:new Date()
+  });
+
+  alert("Order berhasil dikirim!");
+}
+
+</script>
+
+</body>
+</html>
