@@ -5,36 +5,182 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RankBoost ID - Joki Rank Profesional</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
-  font-family:'Poppins',sans-serif;
-  background:#0f0f1a;
+  font-family:'Orbitron',sans-serif;
+  background:radial-gradient(circle at top,#0f0f1a,#000814);
   color:white;
+  overflow-x:hidden;
 }
 
 .header{
   text-align:center;
-  padding:50px 20px;
-  background:linear-gradient(135deg,#111,#1c1c2e);
-  animation:fadeIn 1s ease-in-out;
+  padding:40px 20px;
 }
 
-.logo{
-  font-size:28px;
-  font-weight:700;
-  color:#facc15;
+.header img{
+  width:180px;
+  filter:drop-shadow(0 0 15px #00f2ff);
+}
+
+.tagline{
+  color:#00f2ff;
+  margin-top:10px;
+  font-size:14px;
 }
 
 .container{
-  padding:20px;
   max-width:500px;
   margin:auto;
+  padding:20px;
 }
 
 .card{
+  background:rgba(20,20,40,0.8);
+  border:1px solid #00f2ff33;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 0 25px #00f2ff22;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:12px;
+  border:1px solid #00f2ff55;
+  background:#0f1a2a;
+  color:white;
+}
+
+.rank{
+  background:#0f1a2a;
+  padding:15px;
+  margin-bottom:10px;
+  border-radius:12px;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.rank:hover{
+  border:1px solid #00f2ff;
+  box-shadow:0 0 10px #00f2ff;
+}
+
+.rank.active{
+  border:1px solid #00f2ff;
+  box-shadow:0 0 15px #00f2ff;
+}
+
+.total{
+  font-size:18px;
+  margin:15px 0;
+  color:#00f2ff;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:15px;
+  background:linear-gradient(90deg,#00f2ff,#00aaff);
+  font-weight:bold;
+  color:black;
+  font-size:16px;
+  box-shadow:0 0 20px #00f2ff;
+}
+
+button:hover{
+  opacity:0.9;
+}
+
+.footer{
+  text-align:center;
+  padding:20px;
+  font-size:12px;
+  opacity:0.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="logo.png">
+  <div class="tagline">JOKI RANK MOBILE LEGENDS AMAN & CEPAT</div>
+</div>
+
+<div class="container">
+<div class="card">
+
+<h3>DATA ORDER</h3>
+
+<input id="nama" placeholder="Nama">
+<input id="wa" placeholder="Nomor WhatsApp">
+<input id="gameid" placeholder="User ID Game">
+
+<h3>PILIH RANK</h3>
+
+<div class="rank" onclick="pilih(this,7000)">Epic - Rp 7.000 / star</div>
+<div class="rank" onclick="pilih(this,9000)">Legend - Rp 9.000 / star</div>
+<div class="rank" onclick="pilih(this,25000)">Mythic - Rp 25.000 / star</div>
+
+<input type="number" id="qty" value="1" min="1" onchange="hitung()">
+
+<div class="total">
+Total: Rp <span id="total">0</span>
+</div>
+
+<button onclick="kirim()">ORDER SEKARANG</button>
+
+</div>
+</div>
+
+<div class="footer">
+© 2026 RankBoost ID • Neon Gaming Style
+</div>
+
+<script>
+
+let harga = 0;
+
+function pilih(el,price){
+  document.querySelectorAll(".rank").forEach(r=>r.classList.remove("active"));
+  el.classList.add("active");
+  harga = price;
+  hitung();
+}
+
+function hitung(){
+  let qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = (harga * qty).toLocaleString("id-ID");
+}
+
+function kirim(){
+  if(harga==0){
+    alert("Pilih rank dulu!");
+    return;
+  }
+
+  let nama = document.getElementById("nama").value;
+  let wa = document.getElementById("wa").value;
+  let gameid = document.getElementById("gameid").value;
+  let qty = document.getElementById("qty").value;
+  let total = document.getElementById("total").innerText;
+
+  let pesan = `Halo Admin,%0ASaya ingin order:%0A%0ANama: ${nama}%0AWA: ${wa}%0AGame ID: ${gameid}%0AJumlah Star: ${qty}%0ATotal: Rp ${total}`;
+
+  window.open("https://wa.me/62895337619194?text="+pesan);
+}
+
+</script>
+
+</body>
+</html>.card{
   background:#1c1c2e;
   padding:20px;
   border-radius:16px;
