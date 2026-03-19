@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: white;
+}
+
+header {
+    padding: 15px;
+    background: #1e1e1e;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ff97df;
+}
+
+.logo {
+   display: flex;
+   align-items: center; 
+}
+
+.logo img { 
+   width: 40px; 
+   height: auto;
+   margin-right: 10px; 
+}
+
+.logo span {
+   font-weight: bold; 
+   font-size: 1.5rem; 
+   color: #ff97df;
+   line-height: 1;
+}
+
+.imgml img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.heimuteks {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.heimuteks h1 { margin-bottom: 5px; color: #ff97df; }
+
+.con-tombol {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.tmblorder {
+    padding: 15px 40px;
+    background-color: #ff97df;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(216, 27, 96, 0.4);
+}
+
+.tmblorder:hover {
+    transform: scale(1.05);
+    background-color: #ad1457;
+}
+
+.order-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.grid-rank {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.rank-item {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(216, 27, 96, 0.2);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.rank-item:hover {
+    transform: translateY(-5px);
+    border-color: #ff97df;
+    box-shadow: 0 0 20px rgba(216, 27, 96, 0.6);
+}
+
+.rank-item img {
+    width: 70px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 5px rgba(216, 27, 96, 0.3));
+}
+
+.rank-item:hover img {
+    filter: drop-shadow(0 0 10px rgba(216, 27, 96, 0.8));
+}
+
+.tmbl-back {
+    background: none;
+    border: none;
+    color: #888;
+    margin-top: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.harga {
+    display: block;
+    font-size: 0.8rem;
+    color: #ff3bbb; 
+    margin-top: 5px;
+    font-weight: normal;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.rank-item p {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+@media (max-width: 360px) {
+    .grid-rank {
+        grid-template-columns: 1fr; 
+    }
+}

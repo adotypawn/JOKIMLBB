@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEIMU JOKI MLBB</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+   <img src="heimu.png" alt="Logo">
+   <span>Heimu</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="slide-awal">
+   <div class="imgml">
+       <img src="heimu2.jpg" alt="MLBB Banner">
+   </div>
+   <div class="heimuteks">
+       <h1>JOKI MLBB</h1>
+       <p>Fast Respon & Amanah</p>
+   </div>
+   <div class="con-tombol">
+    <button class="tmblorder" onclick="pindahSlide()">ORDER SEKARANG</button>
+   </div>
+  </section>
+
+   <section id="slide-order" style="display: none;">
+   <div class="order-container">
+   <h2 class="teks-judul">PILIH RANK</h2>
+
+   <div class="grid-rank">
+    <div class="rank-item" onclick="pilihRank('Grandmaster')">
+   <img src="gm.png" alt="GM">
+   <p>Grandmaster</p>
+   <span class="harga">Rp 2.000 / Star</span>
+  </div>
+  <div class="rank-item" onclick="pilihRank('Epic')">
+      <img src="epic.png" alt="Epic">
+      <p>Epic</p>
+   <span class="harga">Rp 2.000 / Star</span>
+  </div>
+  <div class="rank-item" onclick="pilihRank('Legend')">
+      <img src="legend.png" alt="Legend">
+      <p>Legend</p>
+   <span class="harga">Rp 2.000 / Star</span>
+  </div>
+  <div class="rank-item" onclick="pilihRank('Mythic')">
+      <img src="mythic.png" alt="Mythic">
+      <p>Mythic</p>
+   <span class="harga">Rp 2.000 / Star</span>
+  </div>
+       </div>
+
+       <button class="tmbl-back" onclick="kembali()">← Kembali</button>
+   </div>
+        </section>
+    </main>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
