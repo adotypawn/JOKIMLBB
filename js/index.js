@@ -1,28 +1,84 @@
-// GANTI NOMOR INI dengan nomor WA kamu (awali dengan 62)
 const nomorWhatsApp = "62895337619194"; 
-
 function pindahSlide() {
-    document.getElementById('slide-awal').style.display = 'none';
-    document.getElementById('slide-order').style.display = 'block';
-    window.scrollTo(0, 0);
+    // 1. Tampilkan Loader
+    const loader = document.getElementById('loader');
+    loader.style.display = 'flex';
+
+    // 2. Beri jeda waktu (misal 1.2 detik)
+    setTimeout(() => {
+        // Sembunyikan Slide Awal
+        document.getElementById('slide-awal').style.display = 'none';
+        
+        // Tampilkan Slide Order
+        document.getElementById('slide-order').style.display = 'block';
+        
+        // Sembunyikan Loader kembali
+        loader.style.display = 'none';
+        
+        // Scroll ke atas
+        window.scrollTo(0, 0);
+    }, 1200); // 1200 milidetik = 1.2 detik
 }
 
-function kembali() {
-    document.getElementById('slide-awal').style.display = 'block';
-    document.getElementById('slide-order').style.display = 'none';
-    window.scrollTo(0, 0);
-}
+
 
 function pilihRank(namaRank) {
     const detail = prompt(`Kamu memilih ${namaRank}. \nDari Tier/Bintang berapa ke berapa? \n(Contoh: Epic 5 ke Legend 1)`);
 
-    if (detail !== null && detail !== "") {
+    if (detail !== null && detail.trim() !== "") {
         const pesan = `Halo Heimu, saya mau order Joki MLBB.%0A%0A` +
-                      `Target Rank: *${namaRank}*%0A` +
-                      `Detail Order: ${detail}%0A%0A` +
+                      `*Target Rank:* ${namaRank}%0A` +
+                      `*Detail Order:* ${detail}%0A%0A` +
                       `Mohon info harganya ya!`;
         
         const url = `https://api.whatsapp.com/send?phone=${nomorWhatsApp}&text=${pesan}`;
         window.open(url, '_blank');
     }
+}
+// Fungsi untuk membuka Slide Testimoni
+function bukaTestimoni() {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'flex';
+
+    setTimeout(() => {
+        // Sembunyikan semua slide
+        document.getElementById('slide-awal').style.display = 'none';
+        document.getElementById('slide-order').style.display = 'none';
+        
+        // Tampilkan slide testimoni
+        document.getElementById('slide-testimoni').style.display = 'block';
+        
+        loader.style.display = 'none';
+        window.scrollTo(0, 0);
+    }, 1000);
+}
+
+// Fungsi kembali dari testimoni
+function kembaliKeAwal() {
+    document.getElementById('slide-testimoni').style.display = 'none';
+    document.getElementById('slide-awal').style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+// Update fungsi kembali (supaya support semua slide)
+function kembali() {
+    document.getElementById('slide-order').style.display = 'none';
+    document.getElementById('slide-testimoni').style.display = 'none';
+    document.getElementById('slide-awal').style.display = 'block';
+}
+
+function tampilFoto(elemen) {
+    const lightbox = document.getElementById("lightbox");
+    const imgBesar = document.getElementById("img-besar");
+    const teksCaption = document.getElementById("caption");
+    const sumberGambar = elemen.getElementsByTagName('img')[0].src;
+    const teksGambar = elemen.getElementsByTagName('p')[0].innerText;
+
+    lightbox.style.display = "block";
+    imgBesar.src = sumberGambar;
+    teksCaption.innerHTML = teksGambar;
+}
+
+function tutupFoto() {
+    document.getElementById("lightbox").style.display = "none";
 }
