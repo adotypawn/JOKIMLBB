@@ -7,13 +7,25 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+<div id="loader" style="display: none;">
+    <div class="loader-content">
+        <div class="spinner"></div>
+        <p>MEMPROSES DATA...</p>
+    </div>
+</div>
 
-    <header>
+<header>
+    <div class="header-container">
         <div class="logo">
-   <img src="heimu.png" alt="Logo">
-   <span>Heimu</span>
+            <img src="heimu.png" alt="Logo">
+            <span>Heimu</span>
         </div>
-    </header>
+
+        <nav class="header-menu">
+            <a href="#testimoni" class="menu-link" onclick="bukaTestimoni()">Testimoni</a>
+        </nav>
+    </div>
+</header>
 
     <main>
         <section id="slide-awal">
@@ -32,35 +44,97 @@
    <section id="slide-order" style="display: none;">
    <div class="order-container">
    <h2 class="teks-judul">PILIH RANK</h2>
-
+   </div>
    <div class="grid-rank">
-    <div class="rank-item" onclick="pilihRank('Grandmaster')">
-   <img src="gm.png" alt="GM">
-   <p>Grandmaster</p>
-   <span class="harga">Rp 2.000 / Star</span>
-  </div>
-  <div class="rank-item" onclick="pilihRank('Epic')">
-      <img src="epic.png" alt="Epic">
-      <p>Epic</p>
-   <span class="harga">Rp 2.000 / Star</span>
+    <div class="rank-item" onclick="pilihRank('Epic')">
+   <img src="epic.png" alt="Epic">
+   <p>Epic</p>
+   <span class="harga">Rp 4.000 / 🌟</span>
   </div>
   <div class="rank-item" onclick="pilihRank('Legend')">
       <img src="legend.png" alt="Legend">
       <p>Legend</p>
-   <span class="harga">Rp 2.000 / Star</span>
+   <span class="harga">Rp 5.000 / 🌟</span>
   </div>
   <div class="rank-item" onclick="pilihRank('Mythic')">
       <img src="mythic.png" alt="Mythic">
       <p>Mythic</p>
-   <span class="harga">Rp 2.000 / Star</span>
+   <span class="harga">Rp 7.000 / 🌟</span>
+  </div>
+  <div class="rank-item" onclick="pilihRank('Honor')">
+      <img src="honor.png" alt="Honor">
+      <p>Mythic Honor</p>
+   <span class="harga">Rp 8.000 / 🌟</span>
   </div>
        </div>
 
-       <button class="tmbl-back" onclick="kembali()">← Kembali</button>
-   </div>
+
+<div class="payment-section">
+    <p>METODE PEMBAYARAN</p>
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <img src="dana.png" alt="Dana">
+            <img src="gopay.png" alt="GoPay">
+            <img src="spay.png" alt="ShopeePay">
+            <img src="qris.png" alt="QRIS">
+            <img src="ovo.png" alt="OVO">
+            <img src="dana.png" alt="Dana">
+            <img src="gopay.png" alt="GoPay">
+            <img src="spay.png" alt="ShopeePay">
+            <img src="qris.png" alt="QRIS">
+            <img src="ovo.png" alt="OVO">
+        </div>
+    </div>
+</div>
+
+
         </section>
+<section id="slide-testimoni" style="display: none; padding: 20px;">
+    <div class="testi-container">
+        <h2 class="teks-judul">TESTIMONI PELANGGAN</h2>
+        
+<div class="testi-item" onclick="tampilFoto(this)">
+    <img src="testi1.jpg" alt="Epic ke Legend - 1 Hari Selesai!">
+    <p>Epic ke Legend - 1 Hari Selesai!</p>
+</div>
+
+
+<div class="testi-item" onclick="tampilFoto(this)">
+    <img src="testi2.jpg" alt="Epic ke Legend - 1 Hari Selesai!">
+    <p>Epic ke Legend - 1 Hari Selesai!</p>
+</div>
+
+<div class="testi-item" onclick="tampilFoto(this)">
+    <img src="testi3.jpg" alt="Epic ke Legend - 1 Hari Selesai!">
+    <p>Epic ke Legend - 1 Hari Selesai!</p>
+</div>
+
+
+
+        <button class="tmbl-back" onclick="kembaliKeAwal()">← Kembali ke Utama</button>
+    </div>
+</section>
+
     </main>
 
     <script src="js/index.js"></script>
+<a href="https://wa.me/62895337619194" class="wa-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <span>Tanya Admin</span>
+</a>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2026 <span>Heimu Joki</span>. All Rights Reserved.</p>
+        <p class="sub-footer">Penyedia Jasa Joki MLBB Terpercaya & Amanah</p>
+    </div>
+</footer>
+<div id="lightbox" class="lightbox" onclick="tutupFoto()">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="img-besar">
+    <div id="caption"></div>
+</div>
+
 </body>
-</html>
+      </html>
+        
