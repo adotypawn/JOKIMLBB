@@ -1,23 +1,17 @@
 const nomorWhatsApp = "62895337619194"; 
 function pindahSlide() {
-    // 1. Tampilkan Loader
     const loader = document.getElementById('loader');
     loader.style.display = 'flex';
 
-    // 2. Beri jeda waktu (misal 1.2 detik)
     setTimeout(() => {
-        // Sembunyikan Slide Awal
         document.getElementById('slide-awal').style.display = 'none';
         
-        // Tampilkan Slide Order
         document.getElementById('slide-order').style.display = 'block';
         
-        // Sembunyikan Loader kembali
         loader.style.display = 'none';
         
-        // Scroll ke atas
         window.scrollTo(0, 0);
-    }, 1200); // 1200 milidetik = 1.2 detik
+    }, 1200); 
 }
 
 
@@ -35,13 +29,12 @@ function pilihRank(namaRank) {
         window.open(url, '_blank');
     }
 }
-// Fungsi untuk membuka Slide Testimoni
+
 function bukaTestimoni() {
     const loader = document.getElementById('loader');
     loader.style.display = 'flex';
 
     setTimeout(() => {
-        // Sembunyikan semua slide
         document.getElementById('slide-awal').style.display = 'none';
         document.getElementById('slide-order').style.display = 'none';
         
@@ -53,14 +46,12 @@ function bukaTestimoni() {
     }, 1000);
 }
 
-// Fungsi kembali dari testimoni
 function kembaliKeAwal() {
     document.getElementById('slide-testimoni').style.display = 'none';
     document.getElementById('slide-awal').style.display = 'block';
     window.scrollTo(0, 0);
 }
 
-// Update fungsi kembali (supaya support semua slide)
 function kembali() {
     document.getElementById('slide-order').style.display = 'none';
     document.getElementById('slide-testimoni').style.display = 'none';
