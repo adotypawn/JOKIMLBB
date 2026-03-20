@@ -17,7 +17,7 @@ function pindahSlide() {
 
 
 function pilihRank(namaRank) {
-    const detail = prompt(`Kamu memilih ${namaRank}. \nDari Tier/Bintang berapa ke berapa? \n(Contoh: Epic 5 ke Legend 1)`);
+    const detail = prompt(`Kamu memilih ${namaRank}. \nDari Tier/Bintang berapa ke berapa? \n(Contoh: 5 Bintang)`);
 
     if (detail !== null && detail.trim() !== "") {
         const pesan = `Halo Heimu, saya mau order Joki MLBB.%0A%0A` +
