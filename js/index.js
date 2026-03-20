@@ -21,9 +21,9 @@ function pilihRank(namaRank) {
 
     if (detail !== null && detail.trim() !== "") {
         const pesan = `Halo Heimu, saya mau order Joki MLBB.%0A%0A` +
-                      `*Target Rank:* ${namaRank}%0A` +
-                      `*Detail Order:* ${detail}%0A%0A` +
-                      `Mohon info harganya ya!`;
+                      `*Rank:* ${namaRank}%0A` +
+                      `*Star 🌟:* ${detail}%0A%0A` +
+                      `Mohon info totalnya  ya!`;
         
         const url = `https://api.whatsapp.com/send?phone=${nomorWhatsApp}&text=${pesan}`;
         window.open(url, '_blank');
